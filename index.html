@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Steering Vision-Language-Action Models Toward Effective Long-Tail Driving">
+  <meta name="keywords" content="SteerVLA">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SteerVLA: Steering Vision-Language-Action Models in Long-Tail Driving Scenarios</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SteerVLA: Steering Vision-Language-Action Models in Long-Tail Driving Scenarios</h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="box video-section-intro-panel">
+      <p>In these videos, we show a shorter version of the reasoning trace and meta-action (extracting the key information) in 2 long-tail scenarios for clarity and readability. The green dots represent the future waypoint outputs from the low-level policy.</p>
+    </div>
+
+    <div class="columns spotlight-videos" style="align-items: flex-start; margin-bottom: 2.5rem;">
+      <div class="column is-half has-text-centered">
+        <video controls muted loop playsinline width="100%" style="border-radius: 8px;">
+          <source src="static/videos/spotlight1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-half has-text-centered">
+        <video controls muted loop playsinline width="100%" style="border-radius: 8px;">
+          <source src="static/videos/spotlight2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="box video-section-intro-panel video-section-intro-panel--rollouts">
+      <p>In these videos, we show the original output (meta-action + reasoning trace) from the high-level policy of SteerVLA in 6 long-tail scenarios. The green dots represent the future waypoint outputs from the low-level policy.</p>
+    </div>
+
+    <!-- Main Experiment Results. -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+          <div class="columns interpolation-panel" style="align-items: flex-start;">
+            <div class="column has-text-centered">
+              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+                <source src="static/videos/033RouteScenario_2539_rep0_Town12_Accident.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle must merge around an accident blocking the road.</p>
+            </div>
+            <div class="column has-text-centered">
+              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+                <source src="static/videos/041RouteScenario_2790_rep0_Town12_InvadingTurn.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">A car in the oncoming lane turns into the current lane.</p>
+            </div>
+          </div>
+          <div class="columns interpolation-panel" style="align-items: flex-start;">
+            <div class="column has-text-centered">
+              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+                <source src="static/videos/091RouteScenario_3731_rep0_Town13_VehicleTurningRoutePedestrian.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle is turning and must yield to a pedestrian crossing the road.</p>
+            </div>
+            <div class="column has-text-centered">
+              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+                <source src="static/videos/151RouteScenario_24294_rep0_Town02_ParkingCrossingPedestrian.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle encounters a jaywalking pedestrian crossing the road.</p>
+            </div>
+          </div>
+          <div class="columns interpolation-panel" style="align-items: flex-start;">
+            <div class="column has-text-centered">
+              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+                <source src="static/videos/158RouteScenario_24781_rep0_Town01_HardBreakRoute.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle ahead brakes suddenly.</p>
+            </div>
+            <div class="column has-text-centered">
+              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+                <source src="static/videos/039RouteScenario_2709_rep0_Town12_StaticCutIn.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">A static vehicle cuts in front of the ego vehicle on the highway.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
