@@ -239,3 +239,24 @@ body {
   border-radius: 10px;
   overflow: hidden;
 }
+
+.survey-gallery-container {
+  margin-top: 2.25rem;
+}
+
+.survey-gallery-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  display: block;
+}
+
+.survey-gallery-caption {
+  max-width: 64rem;
+  margin: 1rem auto 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #363636;
+  text-align: left;
+}
