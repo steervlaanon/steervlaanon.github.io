@@ -32,6 +32,7 @@
       margin-bottom: 0.75rem;
       font-weight: 700;
       color: #1f2a44;
+      text-align: center;
     }
 
     .survey-results-table {
@@ -45,6 +46,7 @@
       color: #1f2a44;
       border-color: #d9deee;
       vertical-align: middle;
+      text-align: center;
     }
 
     .survey-results-table tbody tr:nth-child(odd) {
@@ -93,9 +95,19 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Experiments</h2>
+    <div class="box video-section-intro-panel">
+      <p>
+      We compare SteerVLA with existing methods ORION and SimLingo on Bench2Drive-LongTail, a subset of Bench2Drive consisting of 11 representative long-tail scenarios.
+      </p>
+    </div>
+    <div class="figure-container">
+      <img src="./static/images/longtail.jpg" alt="Figure 1" style="width: 100%; max-width: 100%; height: auto;" />
+    </div>
+    <h2 class="title is-3 has-text-centered">Example Policy Rollouts</h2>
 
     <div class="box video-section-intro-panel">
-      <p>In these videos, we show a shorter version of the reasoning trace and meta-action (extracting the key information) in 2 long-tail scenarios for clarity and readability. The green dots represent the future waypoint outputs from the low-level policy.</p>
+      <p>In the below videos, we show a shorter version of the reasoning trace and meta-action (extracting the key information) in 2 long-tail scenarios for clarity and readability. The green dots represent the future waypoint outputs from the low-level policy.</p>
     </div>
 
     <div class="columns spotlight-videos" style="align-items: flex-start; margin-bottom: 2.5rem;">
@@ -112,10 +124,11 @@
     </div>
 
     <div class="box video-section-intro-panel video-section-intro-panel--rollouts">
-      <p>In these videos, we show the original output (meta-action + reasoning trace) from the high-level policy of SteerVLA in 6 long-tail scenarios. The green dots represent the future waypoint outputs from the low-level policy.</p>
+      <p>In the below videos, we show the original output (meta-action + reasoning trace) from the high-level policy of SteerVLA in 6 long-tail scenarios. The green dots represent the future waypoint outputs from the low-level policy.</p>
     </div>
 
     <!-- Main Experiment Results. -->
+        
     <div class="columns is-centered">
       <div class="column is-full">
           <div class="columns interpolation-panel" style="align-items: flex-start;">
@@ -165,6 +178,7 @@
     </div>
 
     <div class="survey-gallery-container">
+      <h2 class="title is-3 has-text-centered">Language Label Evaluations</h2>
       <div class="columns survey-gallery" style="align-items: flex-start;">
         <div class="column is-half has-text-centered">
           <img src="static/images/survey1.png" alt="Survey interface with video sample and reasoning trace" class="survey-gallery-image">
