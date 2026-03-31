@@ -58,6 +58,32 @@
       color: #2f3a56;
       white-space: nowrap;
     }
+
+    .survey-results-table .meta-mean-separator {
+      border-left: 2px solid #d9deee !important;
+    }
+
+    .hyperparams-section {
+      margin-top: 2.25rem;
+    }
+
+    .hyperparams-caption {
+      margin-top: 0.75rem;
+      text-align: center;
+      color: #4a4a4a;
+      font-style: italic;
+    }
+
+    .survey-gallery-single {
+      margin-top: 1rem;
+    }
+
+    .survey-gallery-single .survey-gallery-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -98,7 +124,7 @@
     <h2 class="title is-3 has-text-centered">Experiments</h2>
     <div class="box video-section-intro-panel">
       <p>
-      We compare SteerVLA with existing methods ORION and SimLingo on Bench2Drive-LongTail, a subset of Bench2Drive consisting of 11 representative long-tail scenarios.
+      We compare SteerVLA with existing methods ORION and SimLingo on Bench2Drive-LongTail, a subset of Bench2Drive consisting of 11 representative long-tail scenarios. Both SteerVLA and SimLingo underperform ORION on Crossing Vehicle Runs Red due to limited perception from a single front-view camera. In contrast, ORION leverages multi-view cameras (including side views), which enables earlier detection of cross-traffic in this scenario.
       </p>
     </div>
     <div class="figure-container">
@@ -179,57 +205,120 @@
 
     <div class="survey-gallery-container">
       <h2 class="title is-3 has-text-centered">Language Label Evaluations</h2>
-      <div class="columns survey-gallery" style="align-items: flex-start;">
-        <div class="column is-half has-text-centered">
-          <img src="static/images/survey1.png" alt="Survey interface with video sample and reasoning trace" class="survey-gallery-image">
-        </div>
-        <div class="column is-half has-text-centered">
-          <img src="static/images/survey2.png" alt="Survey interface with meta-action variants and rating criteria" class="survey-gallery-image">
-        </div>
-      </div>
-      <div class="survey-gallery-caption">
-        <p>We evaluate reasoning and meta-action labels with 13 evaluators on 60 samples across 9 driving skills (including long-tail scenarios), with each sample rated by 3-4 annotators. For each video, annotators score meta-action quality (maneuver, direction, speed; 1-5) and reasoning support (1-5). We also test prompt sensitivity using two paraphrased prompts (3 variants total) under the same protocol.</p>
-      </div>
       <div class="box survey-results-box">
-        <h3 class="title is-5 survey-results-title">Prompt Variation Study (Mean &plusmn; Std)</h3>
         <div class="table-container">
           <table class="table is-fullwidth is-hoverable survey-results-table">
             <thead>
               <tr>
                 <th rowspan="2">Prompt Variant</th>
-                <th colspan="3" class="has-text-centered">Meta-action</th>
+                <th colspan="4" class="has-text-centered">Meta-action</th>
                 <th rowspan="2">Reasoning Support</th>
               </tr>
               <tr>
                 <th>Maneuver</th>
                 <th>Direction</th>
                 <th>Speed</th>
+                <th class="meta-mean-separator">Mean</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>Original prompt</td>
-                <td>4.23 &plusmn; 0.89</td>
-                <td>4.29 &plusmn; 0.87</td>
-                <td>4.21 &plusmn; 1.00</td>
-                <td>3.51 &plusmn; 1.05</td>
+                <td>4.29 &plusmn; 0.74</td>
+                <td>4.32 &plusmn; 0.84</td>
+                <td>4.31 &plusmn; 0.84</td>
+                <td class="meta-mean-separator">4.31 &plusmn; 0.69</td>
+                <td>3.61 &plusmn; 0.89</td>
               </tr>
               <tr>
                 <td>Paraphrased prompt 1</td>
+                <td>4.18 &plusmn; 0.78</td>
+                <td>4.22 &plusmn; 0.82</td>
                 <td>4.12 &plusmn; 0.88</td>
-                <td>4.21 &plusmn; 0.87</td>
-                <td>4.04 &plusmn; 1.01</td>
-                <td>3.50 &plusmn; 1.10</td>
+                <td class="meta-mean-separator">4.17 &plusmn; 0.69</td>
+                <td>3.61 &plusmn; 0.94</td>
               </tr>
               <tr>
                 <td>Paraphrased prompt 2</td>
-                <td>4.10 &plusmn; 0.91</td>
-                <td>4.27 &plusmn; 0.98</td>
-                <td>4.09 &plusmn; 0.91</td>
-                <td>3.46 &plusmn; 1.12</td>
+                <td>4.21 &plusmn; 0.77</td>
+                <td>4.29 &plusmn; 0.88</td>
+                <td>4.16 &plusmn; 0.83</td>
+                <td class="meta-mean-separator">4.22 &plusmn; 0.70</td>
+                <td>3.57 &plusmn; 0.94</td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+      <div class="survey-gallery-caption">
+        <p>We evaluate reasoning and meta-action labels with 13 evaluators on 60 samples across 9 driving skills (including long-tail scenarios), with each sample rated by 3-4 annotators. For each video, annotators score meta-action quality (maneuver, direction, speed; 1-5) and reasoning support (1-5). We also test prompt sensitivity using two paraphrased prompts (3 variants total) under the same protocol.</p>
+      </div>
+      <div class="survey-gallery-single has-text-centered">
+        <img src="static/images/survey1.png" alt="Survey interface with video sample and reasoning trace" class="survey-gallery-image">
+      </div>
+      <div class="survey-gallery-single has-text-centered">
+        <img src="static/images/survey2.png" alt="Survey interface with meta-action variants and rating criteria" class="survey-gallery-image">
+      </div>
+    </div>
+
+    <div class="hyperparams-section">
+      <h2 class="title is-3 has-text-centered">Training Hyperparameters</h2>
+      <div class="columns is-multiline" style="align-items: flex-start;">
+        <div class="column is-half">
+          <div class="box survey-results-box">
+            <h3 class="title is-5 survey-results-title">High-Level Policy</h3>
+            <div class="table-container">
+              <table class="table is-fullwidth is-hoverable survey-results-table">
+                <thead>
+                  <tr>
+                    <th>Hyperparameter</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Batch Size</td><td>96</td></tr>
+                  <tr><td>Gradient Accumulation Steps</td><td>2</td></tr>
+                  <tr><td>Epochs</td><td>20</td></tr>
+                  <tr><td>Learning Rate</td><td>3 &times; 10<sup>-5</sup></td></tr>
+                  <tr><td>Learning Rate Scheduler</td><td>Cosine Decay</td></tr>
+                  <tr><td>Betas</td><td>(0.9, 0.999)</td></tr>
+                  <tr><td>Optimizer</td><td>AdamW</td></tr>
+                  <tr><td>Warmup steps</td><td>5% of total steps</td></tr>
+                  <tr><td>LoRA alpha</td><td>64</td></tr>
+                  <tr><td>LoRA r</td><td>32</td></tr>
+                  <tr><td>LoRA dropout</td><td>0.1</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="box survey-results-box">
+            <h3 class="title is-5 survey-results-title">Low-Level Policy</h3>
+            <div class="table-container">
+              <table class="table is-fullwidth is-hoverable survey-results-table">
+                <thead>
+                  <tr>
+                    <th>Hyperparameter</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Batch Size</td><td>120</td></tr>
+                  <tr><td>Gradient Accumulation Steps</td><td>1</td></tr>
+                  <tr><td>Epochs</td><td>30</td></tr>
+                  <tr><td>Learning Rate</td><td>3 &times; 10<sup>-5</sup></td></tr>
+                  <tr><td>Learning Rate Scheduler</td><td>Cosine Decay</td></tr>
+                  <tr><td>Betas</td><td>(0.9, 0.999)</td></tr>
+                  <tr><td>Optimizer</td><td>AdamW</td></tr>
+                  <tr><td>Warmup steps</td><td>5% of total steps</td></tr>
+                  <tr><td>LoRA alpha</td><td>64</td></tr>
+                  <tr><td>LoRA r</td><td>32</td></tr>
+                  <tr><td>LoRA dropout</td><td>0.1</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
