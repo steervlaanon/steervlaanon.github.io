@@ -121,19 +121,19 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Experiments</h2>
+    <h2 class="title is-3 has-text-centered">Experiments on Bench2Drive-LongTail</h2>
     <div class="box video-section-intro-panel">
       <p>
-      We compare SteerVLA with existing methods ORION and SimLingo on Bench2Drive-LongTail, a subset of Bench2Drive consisting of 11 representative long-tail scenarios. Both SteerVLA and SimLingo underperform ORION on Crossing Vehicle Runs Red due to limited perception from a single front-view camera. In contrast, ORION leverages multi-view cameras (including side views), which enables earlier detection of cross-traffic in this scenario.
+      We compare SteerVLA with existing methods ORION and SimLingo on Bench2Drive-LongTail, a subset of Bench2Drive consisting of 11 long-tail scenarios. SteerVLA achieves stronger gains in long-tail scenarios, suggesting that fine-grained reasoning can effectively handle many such cases. Both SteerVLA and SimLingo underperform ORION on <i>Crossing Vehicle Runs Red</i> due to limited perception from a single front-view camera. In contrast, ORION leverages multi-view cameras (including side views), which enables earlier detection of cross-traffic in this scenario.
       </p>
     </div>
     <div class="figure-container">
       <img src="./static/images/longtail.jpg" alt="Figure 1" style="width: 100%; max-width: 100%; height: auto;" />
     </div>
-    <h2 class="title is-3 has-text-centered">Example Policy Rollouts</h2>
+    <h2 class="title is-3 has-text-centered">Example Policy Rollouts for SteerVLA</h2>
 
     <div class="box video-section-intro-panel">
-      <p>In the below videos, we show a shorter version of the reasoning trace and meta-action (extracting the key information) in 2 long-tail scenarios for clarity and readability. The green dots represent the future waypoint outputs from the low-level policy.</p>
+      <p>In the below videos, we show a shorter version of the reasoning trace and meta-action, extracting the key information, from the high-level policy outputs in 2 long-tail scenarios for clarity and readability. The green dots represent the future waypoint outputs from the low-level policy.</p>
     </div>
 
     <div class="columns spotlight-videos" style="align-items: flex-start; margin-bottom: 2.5rem;">
