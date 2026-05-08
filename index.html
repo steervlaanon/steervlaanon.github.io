@@ -111,16 +111,99 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">SteerVLA: Steering Vision-Language-Action Models in Long-Tail Driving Scenarios</h1>
-
-          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<section class="hero teaser teaser-video">
+  <div class="container is-max-desktop has-text-centered">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline width="80%">
+        <source src="static/videos/grid_output.mp4" type="video/mp4">
+      </video>
+      <p class="teaser-takeaway">SteerVLA demonstrates safe and reliable driving across diverse weather and lighting conditions, multiple town maps, and challenging long-tail scenarios.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <div class="content has-text-justified">
+          <p>
+            A fundamental challenge in autonomous driving is the integration of high-level, semantic reasoning for long-tail events with low-level, reactive control for robust driving. While large vision-language models (VLMs) trained on web-scale data offer powerful common-sense reasoning, they lack the grounded experience necessary for safe vehicle control in driving scenarios. We posit that an effective autonomous agent should leverage the world knowledge and common-sense reasoning of VLMs to guide a grounded, steerable driving policy toward safe and robust control. To this end, we propose SteerVLA, which uses reasoning from VLMs to produce fine-grained language instructions that steer a vision–language–action (VLA) driving policy. Key to our method is the language interface between the high-level VLM and low-level VLA, which allows the high-level policy to better ground the nuances of its reasoning in the control outputs of the low-level policy. To provide fine-grained language supervision aligned with vehicle control, we leverage a VLM to augment existing driving data with dense language annotations in hindsight, which we find to be essential for effective reasoning and steerability. We evaluate SteerVLA on a challenging closed-loop benchmark, where it outperforms state-of-the-art methods by 4.77 driving score overall and by 8.04 points on a long-tail subset.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Figure 1. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <div class="figure-container">
+          <img src="./static/images/steervla_fig1.png" alt="Figure 1" style="width: 100%; max-width: 100%; height: auto;" />
+        </div>
+      </div>
+    </div>
+    <!--/ Figure 1. -->
+
+    <!-- Method Overview. -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">SteerVLA</h2>
+        <div class="content has-text-justified">
+          <p>
+            We focus on the challenge of long-tail driving scenarios,
+            where rare and unanticipated events require strong generalization
+            and common-sense reasoning from the policy. VLAs are a strong backbone
+            for driving because they combine semantic grounding from vision–language
+            pretraining with domain-specific adaptation obtained via imitation learning
+            on driving data. Building on this capability, we leverage the reasoning and
+            semantic inference abilities of VLMs and ground these inferences in driving
+            control through fine-grained meta-actions that steer a VLA policy. Concretely,
+            a high-level policy first reasons about the driving scene, historical vehicle
+            states, and routing command to produce a meta-action, accompanied by a short
+            reasoning trace that reasons over driving scenes and helps the policy generate
+            more appropriate meta-actions. The low-level VLA then predicts future waypoints
+            conditioned on both the observation and the meta-action. This design improves
+            generalization by offloading high-level reasoning to the high-level policy,
+            while allowing the VLA to specialize in fast and accurate waypoint prediction
+            conditioned on the high-level's instructions.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <div class="figure-container">
+          <img src="./static/images/method.png" alt="Method Overview" style="width: 100%; max-width: 100%; height: auto;" />
+        </div>
+      </div>
+    </div>
+    <!--/ Method Overview. -->
+
+    <!-- Main Experiment Results. -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Experiments</h2>
+        <div class="content has-text-justified">
+          <div class="figure-container">
+            <img src="./static/images/bench2drive.png" alt="Bench2Drive Results" style="width: 100%; max-width: 100%; height: auto;" />
+          </div>
+          <p>
+            On Bench2Drive, we report overall performance and per-ability scores for SteerVLA across five advanced urban driving skills. SteerVLA significantly outperforms prior approaches, benefiting from improved reasoning and instruction-following capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Main Experiment Results. -->
+
+    <!-- Bench2Drive-LongTail. -->
     <h2 class="title is-3 has-text-centered">Experiments on Bench2Drive-LongTail</h2>
     <div class="box video-section-intro-panel">
       <p>
@@ -128,8 +211,11 @@
       </p>
     </div>
     <div class="figure-container">
-      <img src="./static/images/longtail.jpg" alt="Figure 1" style="width: 100%; max-width: 100%; height: auto;" />
+      <img src="./static/images/longtail.jpg" alt="Bench2Drive LongTail Results" style="width: 100%; max-width: 100%; height: auto;" />
     </div>
+    <!--/ Bench2Drive-LongTail. -->
+
+    <!-- Policy Rollouts. -->
     <h2 class="title is-3 has-text-centered">Example Policy Rollouts for SteerVLA</h2>
 
     <div class="box video-section-intro-panel">
@@ -153,56 +239,55 @@
       <p>In the below videos, we show the original output (meta-action + reasoning trace) from the high-level policy of SteerVLA in 6 long-tail scenarios. The green dots represent the future waypoint outputs from the low-level policy.</p>
     </div>
 
-    <!-- Main Experiment Results. -->
-        
     <div class="columns is-centered">
       <div class="column is-full">
-          <div class="columns interpolation-panel" style="align-items: flex-start;">
-            <div class="column has-text-centered">
-              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
-                <source src="static/videos/033RouteScenario_2539_rep0_Town12_Accident.mp4" type="video/mp4">
-              </video>
-              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle must merge around an accident blocking the road.</p>
-            </div>
-            <div class="column has-text-centered">
-              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
-                <source src="static/videos/041RouteScenario_2790_rep0_Town12_InvadingTurn.mp4" type="video/mp4">
-              </video>
-              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">A car in the oncoming lane turns into the current lane.</p>
-            </div>
+        <div class="columns interpolation-panel" style="align-items: flex-start;">
+          <div class="column has-text-centered">
+            <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+              <source src="static/videos/033RouteScenario_2539_rep0_Town12_Accident.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle must merge around an accident blocking the road.</p>
           </div>
-          <div class="columns interpolation-panel" style="align-items: flex-start;">
-            <div class="column has-text-centered">
-              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
-                <source src="static/videos/091RouteScenario_3731_rep0_Town13_VehicleTurningRoutePedestrian.mp4" type="video/mp4">
-              </video>
-              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle is turning and must yield to a pedestrian crossing the road.</p>
-            </div>
-            <div class="column has-text-centered">
-              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
-                <source src="static/videos/151RouteScenario_24294_rep0_Town02_ParkingCrossingPedestrian.mp4" type="video/mp4">
-              </video>
-              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle encounters a jaywalking pedestrian crossing the road.</p>
-            </div>
+          <div class="column has-text-centered">
+            <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+              <source src="static/videos/041RouteScenario_2790_rep0_Town12_InvadingTurn.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">A car in the oncoming lane turns into the current lane.</p>
           </div>
-          <div class="columns interpolation-panel" style="align-items: flex-start;">
-            <div class="column has-text-centered">
-              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
-                <source src="static/videos/158RouteScenario_24781_rep0_Town01_HardBreakRoute.mp4" type="video/mp4">
-              </video>
-              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle ahead brakes suddenly.</p>
-            </div>
-            <div class="column has-text-centered">
-              <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
-                <source src="static/videos/039RouteScenario_2709_rep0_Town12_StaticCutIn.mp4" type="video/mp4">
-              </video>
-              <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">A static vehicle cuts in front of the ego vehicle on the highway.</p>
-            </div>
+        </div>
+        <div class="columns interpolation-panel" style="align-items: flex-start;">
+          <div class="column has-text-centered">
+            <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+              <source src="static/videos/091RouteScenario_3731_rep0_Town13_VehicleTurningRoutePedestrian.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle is turning and must yield to a pedestrian crossing the road.</p>
+          </div>
+          <div class="column has-text-centered">
+            <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+              <source src="static/videos/151RouteScenario_24294_rep0_Town02_ParkingCrossingPedestrian.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle encounters a jaywalking pedestrian crossing the road.</p>
+          </div>
+        </div>
+        <div class="columns interpolation-panel" style="align-items: flex-start;">
+          <div class="column has-text-centered">
+            <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+              <source src="static/videos/158RouteScenario_24781_rep0_Town01_HardBreakRoute.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">The vehicle ahead brakes suddenly.</p>
+          </div>
+          <div class="column has-text-centered">
+            <video controls muted loop playsinline width="80%" style="border-radius: 8px;">
+              <source src="static/videos/039RouteScenario_2709_rep0_Town12_StaticCutIn.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-weight-semibold" style="width: 80%; margin: 0 auto;">A static vehicle cuts in front of the ego vehicle on the highway.</p>
           </div>
         </div>
       </div>
     </div>
+    <!--/ Policy Rollouts. -->
 
+    <!-- Language Label Evaluations. -->
     <div class="survey-gallery-container">
       <h2 class="title is-3 has-text-centered">Language Label Evaluations</h2>
       <div class="box survey-results-box">
@@ -260,7 +345,9 @@
         <img src="static/images/survey2.png" alt="Survey interface with meta-action variants and rating criteria" class="survey-gallery-image">
       </div>
     </div>
+    <!--/ Language Label Evaluations. -->
 
+    <!-- Training Hyperparameters. -->
     <div class="hyperparams-section">
       <h2 class="title is-3 has-text-centered">Training Hyperparameters</h2>
       <div class="columns is-multiline" style="align-items: flex-start;">
@@ -322,6 +409,7 @@
         </div>
       </div>
     </div>
+    <!--/ Training Hyperparameters. -->
 
   </div>
 </section>
